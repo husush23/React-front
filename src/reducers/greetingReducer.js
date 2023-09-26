@@ -1,4 +1,3 @@
-/* eslint-disable no-param-reassign */
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import axios from 'axios';
 
@@ -12,13 +11,15 @@ const greetingSlice = createSlice({
   name: 'greeting',
   initialState: {
     greeting: '',
+    loading: false, // Add a loading property to your initial state
   },
 
   extraReducers: (builder) => {
-    builder.addCase(fetchGreeting.fulfilled, (state, action) => {
-      state.loading = false;
-      state.greeting = action.payload;
-    });
+    builder.addCase(fetchGreeting.fulfilled, (state, action) => ({
+      ...state, // Spread the existing state
+      loading: false, // Update the loading property
+      greeting: action.payload,
+    }));
   },
 });
 
