@@ -3,7 +3,7 @@ import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import axios from 'axios';
 
 const fetchGreeting = createAsyncThunk('greet', async () => {
-  const response = await axios.get('http://[::1]:3000/random_greeting');
+  const response = await axios.get('http://localhost:3000/random_greeting');
   const { greeting } = response.data;
   return greeting;
 });

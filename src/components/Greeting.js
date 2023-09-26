@@ -5,20 +5,18 @@ import { fetchGreeting } from '../reducers/greetingReducer';
 function Greetings() {
   const dispatch = useDispatch();
   const { greeting } = useSelector((state) => state.greeting);
+  console.log(greeting);
 
   useEffect(() => {
     dispatch(fetchGreeting());
   }, []);
 
   return (
-    <div>
+    <div className="greeting">
       <div>
-        <h1>Random Greeting:</h1>
-        <h2>
-          Greeting form API:
-          {greeting}
-        </h2>
-        <p> Please Refresh to get new greeting</p>
+        <h1>Random Greeting from the API:👇🏻</h1>
+        <h2>{greeting}</h2>
+        <small>If you like to see new greeting refresh the page</small>
       </div>
     </div>
   );
